@@ -1,0 +1,10 @@
+---
+dist: trusty
+sudo: false
+
+install: true
+script: true
+
+notifications:
+  # alert only on broken builds
+  email: { on_success: never, on_failure: always }
