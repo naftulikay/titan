@@ -1,4 +1,4 @@
-# ᴛɪᴛᴀɴ [![Build Status][travis.svg]][travis]
+# ᴛɪᴛᴀɴ :rocket: [![Build Status][travis.svg]][travis]
 
 A network layout well-suited to most organizational needs.
 
