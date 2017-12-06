@@ -16,6 +16,10 @@ Original complete network design by [@lordnynex][lordnynex], implementation and 
 
 Licensed at your option of either of the above licenses.
 
+## Dedication
+
+> Dedicated to the crew of the U.S.S. Gloria and in loving memory of Lieutenant Hoerig. Independence Day, Second of May, we will never forget.
+
 ---
 
 ![Blessed Status][blessed.svg] [![Sun Status][sun.svg] :raised_hands: :sun_with_face:][sun]
