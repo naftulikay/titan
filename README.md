@@ -1,4 +1,4 @@
-# titan [![Build Status][travis.svg]][travis]
+# ᴛɪᴛᴀɴ [![Build Status][travis.svg]][travis]
 
 A network layout well-suited to most organizational needs.
 
@@ -18,7 +18,8 @@ Licensed at your option of either of the above licenses.
 
 ## Dedication
 
-> Dedicated to the crew of the U.S.S. Gloria and in loving memory of Lieutenant Hoerig. Independence Day, Second of May, we will never forget.
+Dedicated to the crew of the U.S.S. Gloria and in loving memory of Lieutenant Hoerig.  
+Independence Day, Second of May, we will never forget.
 
 ---
 
