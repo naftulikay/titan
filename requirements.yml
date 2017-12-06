@@ -1,0 +1,3 @@
+---
+- src: naftulikay.terraform
+- src: naftulikay.vagrant-base

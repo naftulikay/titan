@@ -1,0 +1,17 @@
+---
+- name: build
+  hosts: all
+  become: true
+  roles:
+    - role: naftulikay.terraform
+      version: 0.11.1
+    - role: naftulikay.vagrant-base
+  tasks:
+    - name: allow aws environment variables across the wire
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        line: AcceptEnv AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN
+      notify: restart ssh
+  handlers:
+    - name: restart ssh
+      service: name=sshd state=restarted

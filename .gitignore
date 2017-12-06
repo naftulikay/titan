@@ -1,0 +1,4 @@
+.galaxy-roles
+.terraform
+.vagrant
+*.tfstate
