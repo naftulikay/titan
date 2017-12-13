@@ -10,6 +10,7 @@ resource "aws_default_security_group" "default" {
     from_port = 22
     to_port   = 22
     cidr_blocks = ["${aws_vpc.default.cidr_block}"]
+    ipv6_cidr_blocks = ["${aws_vpc.default.ipv6_cidr_block}"]
   }
 
   egress {
@@ -17,6 +18,7 @@ resource "aws_default_security_group" "default" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
   }
 
   tags {
@@ -37,6 +39,7 @@ resource "aws_security_group" "ssh" {
     from_port = 22
     to_port = 22
     cidr_blocks = ["${aws_vpc.default.cidr_block}"]
+    ipv6_cidr_blocks = ["${aws_vpc.default.ipv6_cidr_block}"]
   }
 
   egress {
@@ -44,6 +47,7 @@ resource "aws_security_group" "ssh" {
     from_port   = 0
     to_port     = 0
     cidr_blocks = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
   }
 
   tags {

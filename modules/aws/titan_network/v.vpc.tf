@@ -61,22 +61,15 @@ variable "network_id" {
 
 variable "ntp_servers" {
   type = "list"
-  default = [
-    "0.amazon.pool.ntp.org",
-    "1.amazon.pool.ntp.org",
-    "2.amazon.pool.ntp.org",
-    "3.amazon.pool.ntp.org"
-  ]
+  default = ["169.254.169.123"]
 
   description = <<-EOF
     A list of up to four NTP servers to be broadcast to hosts on the network via DHCP.
 
     **NOTE:** Amazon offers a completely internal NTP server in every region at 169.254.169.123. However, as per the
-    documentation linked below, it is lacking support for M5 and C5 instances at present. Therefore, we default to using
-    NTP servers that are accessible over WAN and still managed by Amazon. Local, in-region NTP is preferable to access
-    over WAN, but lack of support for certain instance types led to this design decision in TITAN.
+    documentation linked below, it is lacking support for M5 and C5 instances at present.
 
-    Default: Use Amazon's external WAN-facing NTP pool for EC2.
+    Default: Use Amazon's internal NTP host for EC2.
 
     See:
       - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html

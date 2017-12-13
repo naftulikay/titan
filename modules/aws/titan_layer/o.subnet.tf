@@ -28,8 +28,9 @@ output "cidr_start" {
   EOF
 }
 
-output "ipv6_association_ids" {
-  value = ["${aws_subnet.default.*.ipv6_association_ids}"]
+output "ipv6_cidr_block_association_ids" {
+  # this is a bug in terraform documentation, docs say ipv6_association_id is the thing, it's not
+  value = ["${aws_subnet.default.*.ipv6_cidr_block_association_id}"]
 
   description = <<-EOF
     A list of the IPv6 association ids for each subnet in this TITAN layer.
@@ -41,7 +42,7 @@ output "ipv6_association_ids" {
 }
 
 output "ipv6_cidr_blocks" {
-  value = ["${aws_subnet.default.*.ipv6_cidr_blocks}"]
+  value = ["${aws_subnet.default.*.ipv6_cidr_block}"]
 
   description = <<-EOF
     A list of IPv6 CIDR blocks for each subnet in this TITAN layer.
