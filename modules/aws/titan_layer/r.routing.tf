@@ -30,6 +30,14 @@ resource "aws_route" "public" {
   route_table_id = "${element(aws_route_table.default.*.id, count.index)}"
   gateway_id = "${var.internet_gateway_id}"
   destination_cidr_block = "0.0.0.0/0"
+}
+
+resource "aws_route" "public_ipv6" {
+  # only created for public layers
+  count = "${var.is_public ? length(var.availability_zones) : 0}"
+
+  route_table_id = "${element(aws_route_table.default.*.id, count.index)}"
+  gateway_id = "${var.internet_gateway_id}"
   destination_ipv6_cidr_block = "::/0"
 }
 

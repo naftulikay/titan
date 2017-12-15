@@ -23,6 +23,15 @@ resource "aws_network_acl_rule" "ingress" {
   protocol = "all"
   rule_action = "allow"
   cidr_block = "0.0.0.0/0"
+}
+
+resource "aws_network_acl_rule" "ingress_ipv6" {
+  network_acl_id = "${aws_network_acl.default.id}"
+
+  egress = false
+  rule_number = 1001
+  protocol = "all"
+  rule_action = "allow"
   ipv6_cidr_block = "::/0"
 }
 
@@ -35,5 +44,14 @@ resource "aws_network_acl_rule" "egress" {
   protocol = "all"
   rule_action = "allow"
   cidr_block = "0.0.0.0/0"
+}
+
+resource "aws_network_acl_rule" "egress_ipv6" {
+  network_acl_id = "${aws_network_acl.default.id}"
+
+  egress = true
+  rule_number = 1001
+  protocol = "all"
+  rule_action = "allow"
   ipv6_cidr_block = "::/0"
 }
