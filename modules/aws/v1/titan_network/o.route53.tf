@@ -12,7 +12,7 @@ output "delegation_set_id" {
 }
 
 output "delegation_set_name_servers" {
-  value = "${aws_route53_delegation_set.default.name_servers}"
+  value = ["${aws_route53_delegation_set.default.name_servers}"]
 
   description = <<-EOF
     A set of Amazon name servers serving the public Route 53 hosted zone for this TITAN network.
