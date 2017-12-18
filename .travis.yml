@@ -2,8 +2,41 @@
 dist: trusty
 sudo: false
 
-install: true
-script: true
+env:
+  matrix:
+    - TERRAFORM_VERSION: 0.11.1
+
+language: python
+python: [3.5.4]
+cache:
+  pip: true
+  directories:
+    - tool/eggs
+
+before_install:
+  - cd tool
+  # install the given version of terraform
+  - mkdir ~/.bin
+  - export PATH="$PATH:$HOME/.bin"
+  - |-
+      ( cd ~/.bin &&
+        archive="$(mktemp --suffix=.zip)" &&
+        wget -O "$archive" https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+        unzip "$archive" &&
+        test -f ~/.bin/terraform
+      )
+
+install:
+  - pip install --upgrade -r requirements.txt
+  - buildout
+
+script:
+  # display terraform version
+  - terraform -version
+  # execute unit tests
+  - bin/test
+  # run validator
+  - bin/titan validate
 
 notifications:
   # alert only on broken builds
