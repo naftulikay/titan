@@ -10,7 +10,7 @@ import sys
 
 def register(subparsers):
     """Register this module with the argparse parser."""
-    parser = subparsers.add_parser('validate', help="Run the TITAN integration test suite against the project.")
+    parser = subparsers.add_parser('validate', help="Run the Titan integration test suite against the project.")
     parser.set_defaults(callback=main)
 
 

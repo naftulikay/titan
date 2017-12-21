@@ -1,4 +1,4 @@
-# TITAN Network Module - Route 53 Resources
+# Titan Network Module - Route 53 Resources
 
 # Set of Name Servers for Public DNS Resolution
 resource "aws_route53_delegation_set" "default" {

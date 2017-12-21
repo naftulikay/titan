@@ -1,4 +1,4 @@
-# TITAN Network Module - Security Group Resources
+# Titan Network Module - Security Group Resources
 
 # Default Security Group for the VPC
 # Allow SSH Internal Ingress; Egress Anywhere

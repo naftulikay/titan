@@ -1,4 +1,4 @@
-# TITAN Network Module - VPC Endpoint Resourcees
+# Titan Network Module - VPC Endpoint Resourcees
 
 resource "aws_vpc_endpoint" "s3" {
   vpc_id = "${aws_vpc.default.id}"

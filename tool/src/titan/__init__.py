@@ -10,7 +10,7 @@ import argparse
 
 def main():
     """Main entrypoint for the application."""
-    parser = argparse.ArgumentParser(prog='titan', description="The TITAN Network Tool.")
+    parser = argparse.ArgumentParser(prog='titan', description="The Titan Network Tool.")
     subparsers = parser.add_subparsers()
 
     # register commands

@@ -1,4 +1,4 @@
-# TITAN Network Module - SNS Resources
+# Titan Network Module - SNS Resources
 
 # SNS Topic for Network AutoScaling Events
 resource "aws_sns_topic" "autoscaling" {

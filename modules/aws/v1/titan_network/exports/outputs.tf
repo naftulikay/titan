@@ -1,4 +1,4 @@
-# TITAN Network Module Template Outputs File for Projects
+# Titan Network Module Template Outputs File for Projects
 
 output "account_id" { value = "${module.network.account_id}" }
 output "admin_cidr_blocks" { value = ["${module.network.admin_cidr_blocks}"] }

@@ -1,1 +1,1 @@
-# TITAN Network Module
+# Titan Network Module

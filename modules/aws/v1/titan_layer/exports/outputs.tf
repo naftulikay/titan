@@ -1,4 +1,4 @@
-# TITAN Layer Module Template Outputs File for Projects
+# Titan Layer Module Template Outputs File for Projects
 
 output "availability_zones" { value = "${module.layer.availability_zones}" }
 output "cidr_blocks" { value = "${module.layer.cidr_blocks}" }

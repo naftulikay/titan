@@ -1,4 +1,4 @@
-# TITAN Environment Module Template Outputs File for Projects
+# Titan Environment Module Template Outputs File for Projects
 
 output "account_id" { value = "${module.environment.account_id}" }
 output "admin_cidr_blocks" { value = ["${module.environment.admin_cidr_blocks}"] }

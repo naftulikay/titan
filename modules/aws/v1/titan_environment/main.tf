@@ -1,4 +1,4 @@
-# TITAN Environment Module
+# Titan Environment Module
 
 module "network" {
   source = "../titan_network"

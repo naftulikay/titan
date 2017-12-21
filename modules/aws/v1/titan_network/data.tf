@@ -1,4 +1,4 @@
-# TITAN Network Module - Data Providers
+# Titan Network Module - Data Providers
 
 # List of Available Availability Zones in this Region
 data "aws_availability_zones" "default" { state = "available" }

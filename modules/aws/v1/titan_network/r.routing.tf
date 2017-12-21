@@ -1,6 +1,6 @@
-# TITAN Network Module - Routing Resources
+# Titan Network Module - Routing Resources
 
-# The Default Route Table for the VPC; only used when a new subnet is created outside of TITAN
+# The Default Route Table for the VPC; only used when a new subnet is created outside of Titan
 resource "aws_default_route_table" "r" {
   default_route_table_id = "${aws_vpc.default.default_route_table_id}"
 

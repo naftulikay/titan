@@ -1,6 +1,6 @@
-# TITAN Environment Module - Inherited Variables from TTIAN Network Module
+# Titan Environment Module - Inherited Variables from TTIAN Network Module
 
-# See the TITAN Network Module for documentation
+# See the Titan Network Module for documentation
 variable "domain" {}
 
 variable "domain_name_servers" {

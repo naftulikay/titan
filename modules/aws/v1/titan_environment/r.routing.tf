@@ -1,6 +1,6 @@
-# TITAN Environment Module - Routing Resources
+# Titan Environment Module - Routing Resources
 
-# NOTE: These routes are only one-way, they must have counterpart routes back to the TITAN Environment from the Hub.
+# NOTE: These routes are only one-way, they must have counterpart routes back to the Titan Environment from the Hub.
 resource "aws_route" "hub_ipv4" {
   # FIXME due to cross-module issues: "value of 'count' cannot be computed," we have to calculate this
   count = "${var.peering_include_public ?

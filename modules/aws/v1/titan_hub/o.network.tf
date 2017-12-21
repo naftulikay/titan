@@ -1,6 +1,6 @@
-# TITAN Hub Module - Inherited Outputs
+# Titan Hub Module - Inherited Outputs
 
-# See the TITAN Network Module for documentation
+# See the Titan Network Module for documentation
 output "account_id" { value = "${module.network.account_id}" }
 output "admin_cidr_blocks" { value = ["${module.network.admin_cidr_blocks}"] }
 output "admin_ipv6_cidr_block_association_ids" { value = ["${module.network.admin_ipv6_cidr_block_association_ids}"] }

@@ -1,4 +1,4 @@
-# TITAN Environment Module - VPC Peering Resources
+# Titan Environment Module - VPC Peering Resources
 
 # Environments are said to "own" the VPC peering connection to its hub, so tagging is done accordingly
 

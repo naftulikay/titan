@@ -1,4 +1,4 @@
-# TITAN Network Module - VPC Endpoint Outputs
+# Titan Network Module - VPC Endpoint Outputs
 
 output "s3_vpce_id" {
   value = "${aws_vpc_endpoint.s3.id}"

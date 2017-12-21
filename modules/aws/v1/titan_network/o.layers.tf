@@ -1,4 +1,4 @@
-# TITAN Network Module - Layer Outputs
+# Titan Network Module - Layer Outputs
 
 output "all_subnet_cidr_blocks" {
   value = ["${concat(
