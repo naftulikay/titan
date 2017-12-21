@@ -1,4 +1,4 @@
-# TITAN Hub Module Template Outputs File for Projects
+# Titan Hub Module Template Outputs File for Projects
 
 output "account_id" { value = "${module.hub.account_id}" }
 output "admin_cidr_blocks" { value = ["${module.hub.admin_cidr_blocks}"] }

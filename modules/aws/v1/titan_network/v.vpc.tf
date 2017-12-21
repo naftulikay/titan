@@ -1,4 +1,4 @@
-# TITAN Network Module - VPC Variables
+# Titan Network Module - VPC Variables
 
 variable "domain_name_servers" {
   type = "list"
@@ -18,7 +18,7 @@ variable "instance_tenancy" {
   default = "default"
 
   description = <<-EOF
-    Instance tenancy for EC2 instances launched in this TITAN network's VPC.
+    Instance tenancy for EC2 instances launched in this Titan network's VPC.
 
     Default: `default`.
 
@@ -51,11 +51,11 @@ variable "netbios_node_type" {
 
 variable "network_id" {
   description = <<-EOF
-    The second octet to use for this TITAN network.
+    The second octet to use for this Titan network.
 
     In compliance with RFC 1918, the first octet is hard-coded to 10, as this is the only reserved address block which
     is a `/8` dedicated to private networking. This `network_id` is the second octet and is used to create a `/16` for
-    this TITAN network.
+    this Titan network.
   EOF
 }
 
@@ -81,7 +81,7 @@ variable "subnets_per_layer" {
   default = "3"
 
   description = <<-EOF
-    The amount of subnets to create per layer. TITAN layers are composed of this number of subnets distributed across
+    The amount of subnets to create per layer. Titan layers are composed of this number of subnets distributed across
     availability zones.
 
     **NOTE:** Think carefully before changing this value. At minimum, it is advisable to leave this at the default of

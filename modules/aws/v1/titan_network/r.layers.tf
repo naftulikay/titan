@@ -1,4 +1,4 @@
-# TITAN Network Module - Layer Resources
+# Titan Network Module - Layer Resources
 
 # The DMZ Layer: WAN-Facing
 module "dmz_layer" {

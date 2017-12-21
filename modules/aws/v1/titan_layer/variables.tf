@@ -1,4 +1,4 @@
-# TITAN Layer Module - Variables
+# Titan Layer Module - Variables
 
 variable "availability_zones" {
   type = "list"
@@ -20,24 +20,24 @@ variable "is_public" {
 
 variable "name" {
   description = <<-EOF
-    The name of this TITAN layer.
+    The name of this Titan layer.
   EOF
 }
 
 variable "network_name" {
   description = <<-EOF
-    The name of the TITAN Network to which this layer belongs.
+    The name of the Titan Network to which this layer belongs.
   EOF
 }
 
 variable "vpc_id" {
   description = <<-EOF
-    The VPC id of the TITAN network owning this TITAN layer.
+    The VPC id of the Titan network owning this Titan layer.
   EOF
 }
 
 variable "zone" {
   description = <<-EOF
-    The hosted zone of the TITAN Network to which this layer belongs.
+    The hosted zone of the Titan Network to which this layer belongs.
   EOF
 }

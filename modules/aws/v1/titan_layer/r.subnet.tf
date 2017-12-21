@@ -1,4 +1,4 @@
-# TITAN Layer Module - Subnet Resources
+# Titan Layer Module - Subnet Resources
 
 resource "aws_subnet" "default" {
   count = "${length(var.availability_zones)}"

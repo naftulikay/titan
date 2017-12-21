@@ -1,4 +1,4 @@
-# Single, Large-Sized (5 AZ) TITAN Network Example
+# Single, Large-Sized (5 AZ) Titan Network Example
 
 provider "aws" {
   region = "us-east-1"
@@ -19,7 +19,7 @@ module "network" {
   network_id = 1
   name = "development"
   name_short = "dev"
-  name_fancy = "TITAN Development Network"
+  name_fancy = "Titan Development Network"
   domain = "us-east-1.mycompany.com"
   subnets_per_layer = 5
 }

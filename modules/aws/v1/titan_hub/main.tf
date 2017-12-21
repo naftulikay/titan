@@ -1,4 +1,4 @@
-# TITAN Hub Module
+# Titan Hub Module
 
 module "network" {
   source = "../titan_network"

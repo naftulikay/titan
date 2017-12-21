@@ -1,4 +1,4 @@
-# TITAN Network Module - Route 53 Variables
+# Titan Network Module - Route 53 Variables
 
 variable "domain" {
   description = <<-EOF

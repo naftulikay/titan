@@ -14,24 +14,24 @@ terraform {
   }
 }
 
-# The central TITAN Hub which all TITAN Environments are peered to
+# The central Titan Hub which all Titan Environments are peered to
 module "hub" {
   source = "../../../../modules/aws/v1/titan_hub"
   network_id = 100
   name = "hub1"
   name_short = "hub1"
-  name_fancy = "TITAN Development Network"
+  name_fancy = "Titan Development Network"
   domain = "us-east-1.mycompany.com"
   subnets_per_layer = 3
 }
 
-# The "Development" TITAN Environment
+# The "Development" Titan Environment
 module "environment" {
   source = "../../../../modules/aws/v1/titan_environment"
   network_id = 1
   name = "development"
   name_short = "dev"
-  name_fancy = "TITAN Development Network"
+  name_fancy = "Titan Development Network"
   domain = "us-east-1.mycompany.com"
   subnets_per_layer = 3
 
@@ -42,7 +42,7 @@ module "environment" {
   hub_zone = "${module.hub.zone}"
 }
 
-# Internal Routes from the TITAN Hub back to the "Development" TITAN Environment
+# Internal Routes from the Titan Hub back to the "Development" Titan Environment
 resource "aws_route" "dev_ipv4" {
   # FIXME due to cross-module issues: "value of 'count' cannot be computed," we have to calculate this"
   count = "${3 * 5}"

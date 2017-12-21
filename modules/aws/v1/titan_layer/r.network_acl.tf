@@ -1,4 +1,4 @@
-# TITAN Layer Module - Network ACL Resources
+# Titan Layer Module - Network ACL Resources
 
 # Network ACL Shared by All Subnets in the Layer
 resource "aws_network_acl" "default" {

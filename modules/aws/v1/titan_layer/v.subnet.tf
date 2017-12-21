@@ -1,4 +1,4 @@
-# TITAN Layer Module - Subnet Variables
+# Titan Layer Module - Subnet Variables
 
 variable "cidr_mask_bits" {
   default = "7"
@@ -29,7 +29,7 @@ variable "cidr_start" {
 
 variable "network_cidr_block" {
   description = <<-EOF
-    The IPv4 CIDR block of the host TITAN network.
+    The IPv4 CIDR block of the host Titan network.
 
     This should always be a /16.
   EOF
@@ -37,7 +37,7 @@ variable "network_cidr_block" {
 
 variable "network_ipv6_cidr_block" {
   description = <<-EOF
-    The IPv6 CIDR block for the host TITAN network.
+    The IPv6 CIDR block for the host Titan network.
 
     This should always be a /56.
   EOF

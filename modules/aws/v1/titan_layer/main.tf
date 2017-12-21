@@ -1,1 +1,1 @@
-# TITAN Layer Module
+# Titan Layer Module

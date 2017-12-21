@@ -1,4 +1,4 @@
-# TITAN Network Module - NAT Gateway Resources
+# Titan Network Module - NAT Gateway Resources
 
 # NAT Gateways per Availability Zone
 resource "aws_nat_gateway" "default" {

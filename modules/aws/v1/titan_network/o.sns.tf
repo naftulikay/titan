@@ -1,4 +1,4 @@
-# TITAN Network Module - SNS Outputs
+# Titan Network Module - SNS Outputs
 
 output "autoscaling_sns_topic_arn" {
   value = "${aws_sns_topic.autoscaling.arn}"
@@ -6,7 +6,7 @@ output "autoscaling_sns_topic_arn" {
   description = <<-EOF
     ARN of the SNS autoscaling topic.
 
-    This SNS topic is intended to be attached to autoscaling groups in this TITAN network in order to provide a
+    This SNS topic is intended to be attached to autoscaling groups in this Titan network in order to provide a
     centralized notification topic which is notified when servers are added and removed from autoscaling groups.
   EOF
 }

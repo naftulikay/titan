@@ -1,10 +1,10 @@
-# TITAN Network Module - Variables
+# Titan Network Module - Variables
 
 variable "name" {
   description = <<-EOF
-    Long name of the TITAN network.
+    Long name of the Titan network.
 
-    This value serves as a unique identifier between different TITAN networks and is used in tagging resources.
+    This value serves as a unique identifier between different Titan networks and is used in tagging resources.
 
     Examples: `development`, `staging`, `production`.
   EOF
@@ -12,9 +12,9 @@ variable "name" {
 
 variable "name_short" {
   description = <<-EOF
-    Short name of the TITAN network.
+    Short name of the Titan network.
 
-    This value serves as the first segment of the DNS hosted zone for the given TITAN network, e.g `dev.${var.domain}`.
+    This value serves as the first segment of the DNS hosted zone for the given Titan network, e.g `dev.${var.domain}`.
 
     Examples: `dev`, `stg`, `prod`.
   EOF
@@ -22,11 +22,11 @@ variable "name_short" {
 
 variable "name_fancy" {
   description = <<-EOF
-    "Fancy" name for the TITAN network.
+    "Fancy" name for the Titan network.
 
-    This value is used in formatting human-readable descriptions of resources related to the given TITAN network.
+    This value is used in formatting human-readable descriptions of resources related to the given Titan network.
 
-    Examples: `TITAN Development Environment`, `TITAN Hub`, `TITAN Staging Environment`,
-    `TITAN Production Environment`.
+    Examples: `Titan Development Environment`, `Titan Hub`, `Titan Staging Environment`,
+    `Titan Production Environment`.
   EOF
 }

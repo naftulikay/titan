@@ -1,4 +1,4 @@
-# TITAN Network Module - VPC Resources
+# Titan Network Module - VPC Resources
 
 # VPC
 resource "aws_vpc" "default" {

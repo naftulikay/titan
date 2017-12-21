@@ -1,6 +1,6 @@
-# TITAN Network Module - Network ACL Resources
+# Titan Network Module - Network ACL Resources
 
-# The Default Network ACL for the VPC; only used when a new subnet is created outside of TITAN
+# The Default Network ACL for the VPC; only used when a new subnet is created outside of Titan
 resource "aws_default_network_acl" "default" {
   default_network_acl_id = "${aws_vpc.default.default_network_acl_id}"
 

@@ -1,4 +1,4 @@
-# TITAN Layer Module - Routing Resources
+# Titan Layer Module - Routing Resources
 
 # Route Table for Each Subnet
 resource "aws_route_table" "default" {
