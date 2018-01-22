@@ -13,6 +13,10 @@ resource "aws_nat_gateway" "default" {
     titan_network = "${var.name}"
     titan_zone = "${var.name_short}.${var.domain}"
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 # Elastic IP Allocation per NAT Gateway
@@ -20,4 +24,8 @@ resource "aws_eip" "nat" {
   count = "${var.subnets_per_layer}"
 
   vpc = true
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
