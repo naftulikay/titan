@@ -3,6 +3,7 @@
   hosts: all
   become: true
   roles:
+    - role: naftulikay.google-cloud-sdk
     - role: naftulikay.terraform
       version: 0.11.1
     - role: naftulikay.vagrant-python-dev
