@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+function .get-module-outputs() {
+  local module_path="$1" && shift
+
+  find "$module_path" -mindepth 1 -maxdepth 1 -type f -iname '*.tf' | while read file ; do
+    grep -oP '(?<=^output\s\")[^"]+(?=\")' "${file}" || true
+  done | sort -u
+}
+
+function .get-module-variables() {
+  local module_path="$1" && shift
+
+  find "$module_path" -mindepth 1 -maxdepth 1 -type f -iname '*.tf' | while read file ; do
+    grep -oP '(?<=^variable\s\")[^"]+(?=\")' "${file}" || true
+  done | sort -u
+}
+
+function .generate-io-diff() {
+  local module="$1" && shift
+  local module_name="$1" && shift
+
+  local tmpvar="$(mktemp -t "${module_name}.variables.XXX")"
+  local tmpout="$(mktemp -t "${module_name}.outputs.XXX")"
+
+  mkdir -p "tmp/${module_name}"
+
+  # render inputs and outputs to files
+  .get-module-variables "$module" > "$tmpvar"
+  .get-module-outputs "$module" > "$tmpout"
+
+  # generate a diff between them
+  git diff --no-index "$tmpvar" "$tmpout" > "tmp/${module_name}/io.diff" || true
+
+  rm "$tmpvar" "$tmpout"
+}
+
+function .generate-exports-diff() {
+  local module="$1" && shift
+  local module_name="$1" && shift
+
+  if [ ! -d "$module/exports" ]; then
+    echo "ERROR: module ${module_name} has no exports" >&2
+    return 0
+  fi
+
+  local tmpout="$(mktemp -t "${module_name}.outputs.XXX")"
+  local tmpexp="$(mktemp -t "${module_name}.exports.XXX")"
+
+  mkdir -p "tmp/${module_name}"
+
+  # render outputs and exports to files
+  .get-module-outputs "$module" > "$tmpout"
+  .get-module-outputs "$module/exports" | perl -pe 's/^(nat|layer|network)_//g' > "$tmpexp"
+
+  # generate a diff between them
+  git diff --no-index "$tmpout" "$tmpexp" > "tmp/${module_name}/exports.diff" || true
+}
+
+function .lint-module() {
+  local module="$1" && shift
+  local module_name="$(basename "$module")"
+
+  .generate-io-diff "$module" "$module_name"
+  .generate-exports-diff "$module" "$module_name"
+}
+
+function .main() {
+  find modules/gcp/v0/1/ -mindepth 1 -maxdepth 1 -type d | while read module ; do
+    .lint-module "$module"
+  done
+}
+
+if [[ "${BASH_SOURCE[0]}" == "$0" ]] ; then
+  set -e
+  .main $@
+fi

@@ -20,6 +20,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # forward AWS environment variables across the wire
   config.ssh.forward_env = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_SESSION_TOKEN"]
 
+  # share the ~/.config/gcloud directory to grant access to the credentials to the VM
+  # NOTE: since Google insists on having a file rather than (like AWS) using environment variables, there is no better
+  # way of doing this at the moment.
+  config.vm.synced_folder File.join(ENV.fetch('HOME'), ".config", 'gcloud'), "/home/vagrant/.config/gcloud", create: true
+
   # Tweak the VMs configuration.
   config.vm.provider "virtualbox" do |vb|
     vb.cpus = Etc.nprocessors

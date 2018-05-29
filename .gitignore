@@ -4,6 +4,7 @@
 .terraform.tfstate.lock.info
 .vagrant
 *.tfstate
+*.tfstate.*.backup
 *.tfstate.backup
 
 tool/.eggs
@@ -15,6 +16,8 @@ tool/develop-eggs
 tool/eggs
 tool/parts
 tool/src/*.egg-info
+
+tmp/
 
 __pycache__
 *.pyc
