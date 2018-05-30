@@ -6,7 +6,7 @@ provider "google" {
 }
 
 module "network" {
-  source = "../../../../modules/gcp/v0/1/titan_network"
+  source = "../../../../../modules/gcp/v0/1/titan_network"
   region = "us-east1"
 
   id = "0"
