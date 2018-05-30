@@ -19,9 +19,20 @@ module "network" {
 
   nat_additional_ssh_cidr_blocks = ["0.0.0.0/0"]
   nat_additional_startup_script = "${file("${path.module}/init.sh")}"
+
+  depends_on = ["${google_project_services.default.project}"]
 }
 
-data "google_compute_zones" "available" {}
+data "google_client_config" "default" {}
+
+resource "google_project_services" "default" {
+  project = "${data.google_client_config.default.project}"
+  services = ["compute.googleapis.com", "dns.googleapis.com"]
+}
+
+data "google_compute_zones" "available" {
+  depends_on = ["google_project_services.default"]
+}
 
 resource "google_compute_instance" "admin" {
   count = 3
