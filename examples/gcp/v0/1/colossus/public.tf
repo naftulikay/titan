@@ -5,6 +5,8 @@ resource "google_compute_address" "bastion" {
   address_type = "EXTERNAL"
 }
 
+output "bastion" { value = "${google_compute_address.bastion.address}" }
+
 resource "google_compute_instance" "bastion" {
   name = "bastion"
   machine_type = "g1-small"
@@ -28,6 +30,8 @@ resource "google_compute_instance" "bastion" {
   metadata_startup_script = "${file("${path.module}/startup.sh")}"
 
   tags = ["bastion", "public", "colossus-dmz"]
+
+  depends_on = ["module.network"]
 }
 
 resource "google_compute_firewall" "bastion" {

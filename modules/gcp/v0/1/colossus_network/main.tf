@@ -37,6 +37,7 @@ output "public_zone_id" { value = "${google_dns_managed_zone.public.id}" }
 output "public_zone_name" { value = "${local.public_zone_name}" }
 output "public_zone_nameservers" { value = ["${google_dns_managed_zone.public.name_servers}"] }
 output "region" { value = "${data.google_client_config.default.region}" }
+output "uninitialized_space" { value = "${cidrsubnet(local.cidr_block, 4, 15)}" }
 output "vpc_id" { value = "${google_compute_network.default.self_link}" }
 output "vpc_name" { value = "${local.vpc_name}" }
 output "zone" { value = "${local.zone}" }
