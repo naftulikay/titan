@@ -15,6 +15,7 @@ output "public_zone_id"                 { value = "${module.network.public_zone_
 output "public_zone_name"               { value = "${module.network.public_zone_name}" }
 output "public_zone_nameservers"        { value = ["${module.network.public_zone_nameservers}"] }
 output "region"                         { value = "${module.network.region}" }
+output "uninitialized_space"            { value = "${module.network.uninitialized_space}" }
 output "vpc_id"                         { value = "${module.network.vpc_id}" }
 output "vpc_name"                       { value = "${module.network.vpc_name}" }
 output "zone"                           { value = "${module.network.zone}" }
@@ -82,4 +83,3 @@ output "services_services_range_name"   { value = "${module.network.routing_serv
 output "services_name"                  { value = "${module.network.routing_name}" }
 output "services_name_fancy"            { value = "${module.network.routing_name_fancy}" }
 output "services_subnet_id"             { value = "${module.network.routing_subnet_id}" }
-

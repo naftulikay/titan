@@ -1,14 +1,8 @@
 # Colossus Example for GCP
 
-provider "google" {
-  project = "${var.project_name}"
-  region = "${var.region}"
-}
+provider "google" {}
 
 data "google_compute_zones" "available" {}
-
-variable "project_name" {}
-variable "region" { default = "us-east1" }
 
 module "network" {
   source = "../../../../../modules/gcp/v0/1/colossus_network"
