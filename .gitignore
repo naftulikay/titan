@@ -1,24 +1,59 @@
-.galaxy-roles
-.python-version
-.terraform
-.terraform.tfstate.lock.info
-.vagrant
-*.tfstate
-*.tfstate.*.backup
-*.tfstate.backup
+# Ansible
+.ansible/galaxy-roles
+.ansible/roles
+*.retry
 
-tool/.eggs
-tool/.installed.cfg
-tool/bin
-tool/build
-tool/dist
-tool/develop-eggs
-tool/eggs
-tool/parts
-tool/src/*.egg-info
+# Native
 
-tmp/
+*.a
+*.a
+*.app
+*.d
+*.dll
+*.dylib
+*.elf
+*.exe
+*.exp
+*.gch
+*.hex
+*.i*86
+*.ilk
+*.ko
+*.la
+*.lib
+*.lo
+*.map
+*.o
+*.obj
+*.out
+*.pch
+*.so
+*.so.*
+*.x86_64
+
+# Python
+/tool/bin/
+/tool/build/
+/tool/develop-eggs/
+/tool/dist/
+/tool/eggs/
+/tool/parts/
+/tool/src/*.egg-info
+/tool/.eggs/
+/tool/.installed.cfg
+/tool/.python-version
 
 __pycache__
 *.pyc
 *.pyo
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
+/tmp/
+
+# Vagrant
+.vagrant/
+*-VBoxSVC-*.log
