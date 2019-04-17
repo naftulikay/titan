@@ -18,6 +18,7 @@ variable "network_cidr_block" {}
 variable "network_name_fancy" {}
 variable "region" {}
 variable "vpc_id" {}
+variable "enable_flow_logs" { default = false }
 
 # outputs
 output "cidr_block" { value = "${local.cidr_block}" }
@@ -41,6 +42,7 @@ resource "google_compute_subnetwork" "default" {
   region = "${var.region}"
 
   ip_cidr_range = "${local.cidr_block}"
+  enable_flow_logs = "${var.enable_flow_logs}"
 
   # container range
   secondary_ip_range {
