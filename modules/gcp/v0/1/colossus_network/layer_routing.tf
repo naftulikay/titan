@@ -10,6 +10,7 @@ module "routing_layer" {
   network_name_fancy = "${var.name_fancy}"
   region = "${data.google_client_config.default.region}"
   vpc_id = "${google_compute_network.default.self_link}"
+  enable_flow_logs = "${var.enable_flow_logs}"
 }
 
 output "routing_cidr_block"           { value = "${module.routing_layer.cidr_block}" }
