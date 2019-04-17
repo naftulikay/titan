@@ -7,4 +7,4 @@ data "aws_availability_zones" "default" { state = "available" }
 data "aws_caller_identity" "default" {}
 
 # The Current AWS Region
-data "aws_region" "default" { current = true }
+data "aws_region" "default" {}

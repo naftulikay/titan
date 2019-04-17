@@ -175,7 +175,7 @@ class TerraformPlanValidator(object):
             example_success = True
 
             # init
-            p = subprocess.Popen(['terraform', 'init'], cwd=example_path, stdout=subprocess.PIPE,
+            p = subprocess.Popen(['terraform', 'init', '-no-color'], cwd=example_path, stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT)
             stdout, _ = p.communicate()
 
@@ -188,7 +188,7 @@ class TerraformPlanValidator(object):
                 continue
 
             # validate
-            p = subprocess.Popen(['terraform', 'plan', '-parallelism=300'], cwd=example_path, stdout=subprocess.PIPE,
+            p = subprocess.Popen(['terraform', 'plan', '-parallelism=300', '-no-color'], cwd=example_path, stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT)
             stdout, _ = p.communicate()
 
@@ -229,7 +229,7 @@ class TerraformValidateValidator(object):
             example_success = True
 
             # init
-            p = subprocess.Popen(['terraform', 'init'], cwd=example_path, stdout=subprocess.PIPE,
+            p = subprocess.Popen(['terraform', 'init', '-no-color'], cwd=example_path, stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT)
             stdout, _ = p.communicate()
 
@@ -242,7 +242,7 @@ class TerraformValidateValidator(object):
                 continue
 
             # validate
-            p = subprocess.Popen(['terraform', 'validate'], cwd=example_path, stdout=subprocess.PIPE,
+            p = subprocess.Popen(['terraform', 'validate', '-no-color'], cwd=example_path, stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT)
             stdout, _ = p.communicate()
 
