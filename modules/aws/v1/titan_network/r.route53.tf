@@ -20,7 +20,9 @@ resource "aws_route53_zone" "public" {
 # Private/Internal Route 53 Hosted Zone
 resource "aws_route53_zone" "private" {
   name = "${var.name_short}.${var.domain}"
-  vpc_id = "${aws_vpc.default.id}"
+  vpc {
+    vpc_id = "${aws_vpc.default.id}"
+  }
 
   tags {
     Name = "${var.name_fancy} Private Hosted Zone"
@@ -32,7 +34,9 @@ resource "aws_route53_zone" "private" {
 # Reverse Route 53 Hosted Zone
 resource "aws_route53_zone" "reverse" {
   name = "${var.network_id}.10.in-addr.arpa"
-  vpc_id = "${aws_vpc.default.id}"
+  vpc {
+    vpc_id = "${aws_vpc.default.id}"
+  }
 
   tags {
     Name = "${var.name_fancy} Reverse Hosted Zone"
