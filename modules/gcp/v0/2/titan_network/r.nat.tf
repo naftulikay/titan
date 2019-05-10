@@ -1,0 +1,37 @@
+# Titan Network Module - NAT Resources
+
+module "nat" {
+  source = "../titan_nat"
+
+  additional_instance_labels = "${var.nat_additional_instance_labels}"
+  additional_instance_tags = ["${var.nat_additional_instance_tags}"]
+  additional_private_routing_tags = "${var.nat_additional_private_routing_tags}"
+  additional_ssh_cidr_blocks = "${var.nat_additional_ssh_cidr_blocks}"
+  additional_startup_script = "${var.nat_additional_startup_script}"
+  allow_local_ssh_access = "${var.nat_allow_local_ssh_access}"
+  autohealing_initial_delay = "${var.nat_autohealing_initial_delay}"
+  dmz_cidr_blocks = "${module.dmz_layer.cidr_blocks}"
+  dmz_subnet_ids = "${module.dmz_layer.subnet_ids}"
+  healthcheck_healthy_threshold = "${var.nat_healthcheck_healthy_threshold}"
+  healthcheck_interval = "${var.nat_healthcheck_interval}"
+  healthcheck_path = "${var.nat_healthcheck_path}"
+  healthcheck_port = "${var.nat_healthcheck_port}"
+  healthcheck_timeout = "${var.nat_healthcheck_timeout}"
+  healthcheck_unhealthy_threshold = "${var.nat_healthcheck_unhealthy_threshold}"
+  instance_boot_disk_size = "${var.nat_instance_boot_disk_size}"
+  instance_boot_disk_type = "${var.nat_instance_boot_disk_type}"
+  instance_image = "${var.nat_instance_image}"
+  instance_labels = "${var.nat_instance_labels}"
+  instance_metadata = "${var.nat_instance_metadata}"
+  instance_tags = "${var.nat_instance_tags}"
+  instance_type = "${var.nat_instance_type}"
+  max_availability_zones = "${var.nat_max_availability_zones}"
+  network_cidr_block = "${local.cidr_block}"
+  network_id = "${var.id}"
+  private_route_priority = "${var.nat_private_route_priority}"
+  private_routing_tags = "${var.nat_private_routing_tags}"
+  region = "${var.region}"
+  ssh_source_tags = "${var.nat_ssh_source_tags}"
+  startup_script_template = "${var.nat_startup_script_template}"
+  vpc_id = "${google_compute_network.default.self_link}"
+}
