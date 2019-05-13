@@ -1,6 +1,12 @@
 Titan Layers
 ============
 
+.. toctree::
+  :maxdepth: 2
+
+.. image:: ../../../site/layer/titan-layer-medium-no-grid.svg
+  :width: 100%
+
 A Titan *Layer* is a group of subnets, route tables, network ACLs, and other relevant resources all allocated for
 a single logical purpose.
 
@@ -14,7 +20,9 @@ There are five default Titan Layers included in every Titan Network:
 
 It is possible to add additional arbitrary Titan Layers to a given Titan Network.
 
-Layers scale to the amount of availability zones specified.
+Layers scale to the amount of availability zones specified and support from one to five availability zones. Using an
+odd number of availability zones is recommended for availability reasons (preventing split-brain scenarious in case
+of network partitions).
 
 Diagrams
 --------
