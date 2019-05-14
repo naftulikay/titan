@@ -1,4 +1,4 @@
-Concepts
+Concepts In-Depth
 =================
 
 Titan is a collection of logical concepts which will be explained presently.
@@ -10,3 +10,17 @@ Titan is a collection of logical concepts which will be explained presently.
   concepts/network
   concepts/hub
   concepts/environment
+
+With these primitives as building blocks, Titan builds networks and network topologies which are:
+
+Predictable
+  abcd
+
+Highly Available
+  abcd
+
+Scalable
+  abcd
+
+Secure
+  abcdd

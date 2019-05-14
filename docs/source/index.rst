@@ -11,9 +11,10 @@ A networking framework well-suited to most organizational needs.
 **Table of Contents**
 
 .. toctree::
-  :maxdepth: 3
+  :maxdepth: 2
 
   concepts
+  reference
 ..
 
   **NOTE:** Titan's documentation concerns specifically the *AWS* implementation. `Colossus <https://github.com/naftulikay/colossus>`_
