@@ -1,13 +1,17 @@
 # Colossus Example for GCP
 
-provider "google" {
-  version = "1.20"
-}
+provider "google" {}
+
+provider "google-beta" {}
 
 data "google_compute_zones" "available" {}
 
 module "network" {
-  source = "../../../../../modules/gcp/v0/1/colossus_network"
+  source = "../../../../../modules/gcp/v0/3/colossus_network"
+
+  providers = {
+    google = "google-beta"
+  }
 
   id = "0"
   domain = "gcp.mycompany.com"
