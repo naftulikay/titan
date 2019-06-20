@@ -7,7 +7,12 @@ from titan.git import Git
 from titan.terraform import Parser, Output, Variable
 
 import os
+import re
 import subprocess
+import sys
+
+
+ALL_NEWLINES = re.compile(r'(?:\\n|\n)')
 
 
 def get_module_entities(path):
@@ -47,11 +52,10 @@ class BindingValidator(object):
 
             for variable in sorted(variables, key=lambda v: v.name):
                 if not Output(variable.name) in outputs:
-                    # TODO better reporting!
-                    print("FAILURE[{}]: variable \"{}\" not found in outputs".format(module, variable.name))
+                    render_failure(module, "Variable {} not found in outputs.".format(variable.name))
                     success = False
 
-            print("SUCCESS[{}] All variables bound as outputs.".format(module))
+            render_success(module, "All variables bound as outputs.")
 
         return success
 
@@ -78,7 +82,7 @@ class ExportValidator(object):
             module_success = True
 
             if not os.path.isdir(os.path.join(base, module, 'exports')):
-                print("FAILURE[{}]: module does not provide template exports.".format(module))
+                render_failure(module, "Module does not provide template exports.")
                 success = False
                 continue
 
@@ -96,12 +100,11 @@ class ExportValidator(object):
 
             for mod_output in sorted(mod_outputs, key=lambda o: o.name):
                 if not mod_output in export_outputs:
-                    print("FAILURE[{}]: exports do not include {}".format(module, mod_output.name))
-                    success = False
-                    module_success = False
+                    render_failure(module, "Exports do not include {}".format(mod_output.name))
+                    success, module_success = False, False
 
             if module_success:
-                print("SUCCESS[{}] All outputs exported to the template file.".format(module))
+                render_success(module, "All outputs exported to the template file.")
 
         return success
 
@@ -136,18 +139,16 @@ class InheritanceValidator(object):
 
             for output in sorted(parent_outputs, key=lambda o: o.name):
                 if not output in child_entities:
-                    print("FAILURE[{}]: output {} is not present in child module".format(module, output.name))
-                    success = False
-                    module_success = False
+                    render_failure(module, "Output {} is not present in child module.".format(output.name))
+                    success, module_success = False, False
 
             for variable in sorted(parent_variables, key=lambda v: v.name):
                 if not variable in child_entities:
-                    print("FAILURE[{}]: variable {} is not present in child module".format(module, variable.name))
-                    success = False
-                    module_success = False
+                    render_failure(module, "Variable {} is not present in child module.".format(variable.name))
+                    success, module_success = False, False
 
             if module_success:
-                print("SUCCESS[{}] All parent variables and outputs bound in child module.".format(module))
+                render_success(module, "All parent variables and outputs found in child module.")
 
         return success
 
@@ -179,29 +180,23 @@ class TerraformPlanValidator(object):
                 stderr=subprocess.STDOUT)
             stdout, _ = p.communicate()
 
-            if p.returncode > 0:
-                print("FAILURE[{}] Terraform initialization failed: ".format(example))
-                print(stdout)
-                print(''.join(['-' for x in range(64)]))
-                success = False
-                example_success = False
+            if p.returncode != 0:
+                render_failure(example, "Terraform initialization failed:", stdout)
+                success, example_success = False, False
                 continue
 
             # validate
-            p = subprocess.Popen(['terraform', 'plan', '-parallelism=300', '-no-color'], cwd=example_path, stdout=subprocess.PIPE,
+            p = subprocess.Popen(['terraform', 'plan', '-no-color', '-parallelism=300'], cwd=example_path, stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT)
             stdout, _ = p.communicate()
 
-            if p.returncode > 0:
-                print("FAILURE[{}] Terraform validate failed: ".format(example))
-                print(stdout)
-                print(''.join(['-' for x in range(64)]))
-                success = False
-                example_success = False
+            if p.returncode != 0:
+                render_failure(example, "Terraform validate failed:", stdout)
+                success, example_success = False, False
                 continue
 
             if example_success:
-                print("SUCCESS[{}] Terraform plan executed successfully.".format(example))
+                render_success(example, "Terraform plan executed successfully.")
 
         return success
 
@@ -233,12 +228,9 @@ class TerraformValidateValidator(object):
                 stderr=subprocess.STDOUT)
             stdout, _ = p.communicate()
 
-            if p.returncode > 0:
-                print("FAILURE[{}] Terraform initialization failed: ".format(example))
-                print(stdout)
-                print(''.join(['-' for x in range(64)]))
-                success = False
-                example_success = False
+            if p.returncode != 0:
+                render_failure(example, "Terraform initialization failed:", stdout)
+                success, example_success = False, False
                 continue
 
             # validate
@@ -247,17 +239,42 @@ class TerraformValidateValidator(object):
             stdout, _ = p.communicate()
 
             if p.returncode > 0:
-                print("FAILURE[{}] Terraform validate failed: ".format(example))
-                print(stdout)
-                print(''.join(['-' for x in range(64)]))
-                success = False
-                example_success = False
+                render_failure(example, "Terraform validate failed:", stdout)
+                success, example_success = False, False
                 continue
 
             if example_success:
-                print("SUCCESS[{}] Terraform validate executed successfully.".format(example))
+                render_success(example, "Terraform validate executed successfully.")
 
         return success
+
+
+def render_success(test_name, message):
+    """Render the given test success to output."""
+    if os.isatty(1):
+        sys.stdout.write('\033[1;32m')
+
+    print("PASS [{:<17}] {}".format(test_name, message))
+
+    if os.isatty(1):
+        sys.stdout.write('\033[0m')
+
+
+def render_failure(test_name, message, output=None):
+    """Render the given test failure to output."""
+    if os.isatty(1):
+        sys.stdout.write('\033[1;31m')
+
+    print("FAIL [{:<17}] {}".format(test_name, message))
+
+    if os.isatty(1):
+        sys.stdout.write("\033[0m")
+
+    if output:
+        print()
+        print((os.linesep + ">" + "  ").join(ALL_NEWLINES.split(output.decode('utf-8'))))
+        print()
+
 
 
 VALIDATORS = (

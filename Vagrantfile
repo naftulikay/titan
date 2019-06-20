@@ -11,19 +11,16 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "bento/centos-7.4"
-  config.vm.hostname = "titan"
+  config.vm.hostname = File.expand_path(File.dirname(__FILE__)).split('/')[-1]
+
+  # forward AWS environment variables across the wire
+  config.ssh.forward_env = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_SESSION_TOKEN"]
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   config.vm.network "private_network", type: "dhcp"
 
-  # forward AWS environment variables across the wire
-  config.ssh.forward_env = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_SESSION_TOKEN"]
-
-  # share the ~/.config/gcloud directory to grant access to the credentials to the VM
-  # NOTE: since Google insists on having a file rather than (like AWS) using environment variables, there is no better
-  # way of doing this at the moment.
-  config.vm.synced_folder File.join(ENV.fetch('HOME'), ".config", 'gcloud'), "/home/vagrant/.config/gcloud", create: true
+  config.vm.network "forwarded_port", guest: 5500, host: 8080, auto_correct: true
 
   # Tweak the VMs configuration.
   config.vm.provider "virtualbox" do |vb|
@@ -35,7 +32,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Configure the VM using Ansible
   config.vm.provision "ansible_local" do |ansible|
     ansible.galaxy_role_file = "requirements.yml"
-    ansible.galaxy_roles_path = ".galaxy-roles"
+    ansible.galaxy_roles_path = ".ansible/galaxy-roles"
     ansible.provisioning_path = "/vagrant"
     ansible.playbook = "vagrant.yml"
     # allow passing ansible args from environment variable

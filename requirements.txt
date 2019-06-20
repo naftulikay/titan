@@ -1,0 +1,3 @@
+guzzle_sphinx_theme
+sphinx==1.6.6
+sphinx-reload
