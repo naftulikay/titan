@@ -49,6 +49,7 @@ output name_fancy { value = module.hub.name_fancy }
 output name_short { value = module.hub.name_short }
 output name { value = module.hub.name }
 output nat_allocation_ids { value = module.hub.nat_allocation_ids }
+output nat_enabled { value = module.hub.nat_enabled }
 output nat_gateway_ids { value = module.hub.nat_gateway_ids }
 output nat_interface_ids { value = module.hub.nat_interface_ids }
 output nat_private_ips { value = module.hub.nat_private_ips }

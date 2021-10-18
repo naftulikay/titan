@@ -10,6 +10,7 @@ output ipv6_cidr_block_association_ids { value = module.layer.ipv6_cidr_block_as
 output ipv6_cidr_blocks { value = module.layer.ipv6_cidr_blocks }
 output is_public { value = module.layer.is_public }
 output name { value = module.layer.name }
+output nat_enabled { value = module.layer.nat_enabled }
 output nat_gateway_ids { value = module.layer.nat_gateway_ids }
 output network_acl_id { value = module.layer.network_acl_id }
 output network_cidr_block { value = module.layer.network_cidr_block }

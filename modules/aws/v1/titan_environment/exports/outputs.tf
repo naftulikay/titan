@@ -56,6 +56,7 @@ output name_fancy { value = module.environment.name_fancy }
 output name_short { value = module.environment.name_short }
 output name { value = module.environment.name }
 output nat_allocation_ids { value = module.environment.nat_allocation_ids }
+output nat_enabled { value = module.environment.nat_enabled }
 output nat_gateway_ids { value = module.environment.nat_gateway_ids }
 output nat_interface_ids { value = module.environment.nat_interface_ids }
 output nat_private_ips { value = module.environment.nat_private_ips }

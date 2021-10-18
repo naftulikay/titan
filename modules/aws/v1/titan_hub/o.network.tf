@@ -50,6 +50,7 @@ output name_fancy { value = module.network.name_fancy }
 output name_short { value = module.network.name_short }
 output name { value = module.network.name }
 output nat_allocation_ids { value = module.network.nat_allocation_ids }
+output nat_enabled { value = module.network.nat_enabled }
 output nat_gateway_ids { value = module.network.nat_gateway_ids }
 output nat_interface_ids { value = module.network.nat_interface_ids }
 output nat_private_ips { value = module.network.nat_private_ips }

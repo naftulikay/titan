@@ -16,6 +16,15 @@ variable name {}
 variable name_fancy {}
 variable name_short {}
 
+variable nat_enabled {
+  type = bool
+  default = true
+
+  description = <<-EOF
+    Whether to create NAT gateways and relevant routes and resources.
+  EOF
+}
+
 variable netbios_name_servers {
   type = list(string)
   default = []
