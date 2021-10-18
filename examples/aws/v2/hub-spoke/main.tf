@@ -12,7 +12,7 @@ terraform {
 
 # The central Titan Hub which all Titan Environments are peered to
 module "hub" {
-  source = "../../../../modules/aws/v1/titan_hub"
+  source = "../../../../modules/aws/v2/titan_hub"
   network_id = 100
   name = "hub1"
   name_short = "hub1"
@@ -23,7 +23,7 @@ module "hub" {
 
 # The "Development" Titan Environment
 module "environment" {
-  source = "../../../../modules/aws/v1/titan_environment"
+  source = "../../../../modules/aws/v2/titan_environment"
   network_id = 1
   name = "development"
   name_short = "dev"
