@@ -1,7 +1,7 @@
 # Titan Layer Module - Routing Outputs
 
-output "egress_only_gateway_id" {
-  value = "${var.egress_only_gateway_id}"
+output egress_only_gateway_id {
+  value = var.egress_only_gateway_id
 
   description = <<-EOF
     The Egress-Only Internet Gateway id for the host Titan network.
@@ -10,8 +10,8 @@ output "egress_only_gateway_id" {
   EOF
 }
 
-output "internet_gateway_id" {
-  value = "${var.internet_gateway_id}"
+output internet_gateway_id {
+  value = var.internet_gateway_id
 
   description = <<-EOF
     The Internet Gateway id for the host Titan network.
@@ -20,8 +20,8 @@ output "internet_gateway_id" {
   EOF
 }
 
-output "nat_gateway_ids" {
-  value = ["${var.nat_gateway_ids}"]
+output nat_gateway_ids {
+  value = var.nat_gateway_ids
 
   description = <<-EOF
     A list of NAT Gateway ids, one per availability zone, of the host Titan network.
@@ -30,8 +30,8 @@ output "nat_gateway_ids" {
   EOF
 }
 
-output "route_table_ids" {
-  value = ["${aws_route_table.default.*.id}"]
+output route_table_ids {
+  value = aws_route_table.default.*.id
 
   description = <<-EOF
     A list of route table ids for each subnet in this Titan layer.

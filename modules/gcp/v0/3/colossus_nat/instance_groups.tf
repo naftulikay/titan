@@ -1,6 +1,6 @@
 # Colossus NAT Module - Instance Group Resources
 
-resource "google_compute_instance_group_manager" "primary" {
+resource google_compute_instance_group_manager primary {
   count = "${length(local.availability_zones)}"
 
   name = "nat-0-${element(split("-", local.availability_zones[count.index]), 2)}"
@@ -28,7 +28,7 @@ resource "google_compute_instance_group_manager" "primary" {
   }
 }
 
-resource "google_compute_instance_group_manager" "secondary" {
+resource google_compute_instance_group_manager secondary {
   count = "${var.zonal_high_availability ? length(local.availability_zones) : 0}"
 
   name = "nat-1-${element(split("-", local.availability_zones[count.index]), 2)}"

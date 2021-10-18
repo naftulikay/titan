@@ -21,9 +21,9 @@ module "network" {
   nat_additional_startup_script = "${file("${path.module}/init.sh")}"
 }
 
-data "google_compute_zones" "available" {}
+data google_compute_zones available {}
 
-resource "google_compute_instance" "admin" {
+resource google_compute_instance admin {
   count = 3
 
   name = "nat-test-${count.index}"
@@ -47,7 +47,7 @@ resource "google_compute_instance" "admin" {
   tags = ["no-ip", "nat", "private", "internal-ssh"]
 }
 
-resource "google_compute_firewall" "default" {
+resource google_compute_firewall default {
   name = "internal-ssh"
   network = "${module.network.vpc_id}"
 

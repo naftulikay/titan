@@ -14,10 +14,7 @@ class OutputTestCase(unittest.TestCase):
 
     def test_hash(self):
         """Tests that hash representations work properly."""
-        self.assertEqual(1, len(set([
-            Output("name", "string"),
-            Output("name", "list")
-        ])))
+        self.assertEqual(1, len({Output("name", "string"), Output("name", "list")}))
 
 
 class ParserTestcase(unittest.TestCase):
@@ -31,7 +28,6 @@ class ParserTestcase(unittest.TestCase):
         self.assertIn(Resource("default", "aws_instance"), r)
         self.assertIn(Output("rear"), r)
         self.assertIn(Variable("thing"), r)
-
 
     def test_outputs(self):
         """Test parsing a file with only outputs."""

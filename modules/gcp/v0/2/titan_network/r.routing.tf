@@ -1,7 +1,7 @@
 # Titan Network Module - Routing Resources
 
 # Route for Public, WAN-Facing Layers
-resource "google_compute_route" "public" {
+resource google_compute_route public {
   # only created for public layers
   name = "public"
   dest_range = "0.0.0.0/0"

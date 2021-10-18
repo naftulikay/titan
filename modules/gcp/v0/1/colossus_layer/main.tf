@@ -11,30 +11,30 @@ locals {
 }
 
 # variables
-variable "index" {}
-variable "name" {}
-variable "name_fancy" {}
-variable "network_cidr_block" {}
-variable "network_name_fancy" {}
-variable "region" {}
-variable "vpc_id" {}
-variable "enable_flow_logs" { default = false }
+variable index {}
+variable name {}
+variable name_fancy {}
+variable network_cidr_block {}
+variable network_name_fancy {}
+variable region {}
+variable vpc_id {}
+variable enable_flow_logs { default = false }
 
 # outputs
-output "cidr_block" { value = "${local.cidr_block}" }
-output "container_cidr_block" { value = "${local.container_cidr_block}" }
-output "container_range_name" { value = "${local.container_range_name}" }
-output "gateway_address" { value = "${google_compute_subnetwork.default.gateway_address}" }
-output "index" { value = "${var.index}" }
-output "services_cidr_block" { value = "${local.services_cidr_block}" }
-output "services_range_name" { value = "${local.services_range_name}" }
-output "name" { value = "${var.name}" }
-output "name_fancy" { value = "${var.name_fancy}" }
-output "region" { value = "${var.region}" }
-output "subnet_id" { value = "${google_compute_subnetwork.default.self_link}" }
+output cidr_block { value = "${local.cidr_block}" }
+output container_cidr_block { value = "${local.container_cidr_block}" }
+output container_range_name { value = "${local.container_range_name}" }
+output gateway_address { value = "${google_compute_subnetwork.default.gateway_address}" }
+output index { value = "${var.index}" }
+output services_cidr_block { value = "${local.services_cidr_block}" }
+output services_range_name { value = "${local.services_range_name}" }
+output name { value = "${var.name}" }
+output name_fancy { value = "${var.name_fancy}" }
+output region { value = "${var.region}" }
+output subnet_id { value = "${google_compute_subnetwork.default.self_link}" }
 
 # resources
-resource "google_compute_subnetwork" "default" {
+resource google_compute_subnetwork default {
   name = "${var.name}"
   description = "${local.subnet_description}"
   network = "${var.vpc_id}"

@@ -1,6 +1,6 @@
 # Titan NAT Module
 
-data "google_compute_zones" "available" {}
+data google_compute_zones available {}
 
 locals {
   allowed_ssh_network_block = "${

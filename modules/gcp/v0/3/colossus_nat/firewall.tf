@@ -1,6 +1,6 @@
 # Colossus NAT Module - Firewall Resources
 
-resource "google_compute_firewall" "summary" {
+resource google_compute_firewall summary {
   name = "nat-gateway-ingress"
   description = "Firewall rule allowing instances within the network to use NAT gateways as a summary route to WAN."
 
@@ -15,7 +15,7 @@ resource "google_compute_firewall" "summary" {
   target_tags = ["${local.primary_instance_tag}"]
 }
 
-resource "google_compute_firewall" "health_check" {
+resource google_compute_firewall health_check {
   name    = "nat-gateway-health-check"
   description = "Firewall rule allowing health checks to NAT gateway instances."
   network = "${var.vpc_id}"

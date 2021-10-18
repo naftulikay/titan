@@ -73,7 +73,7 @@ locals {
  *   - 10.0.206.0/23
  *   - 10.0.208.0/23
  */
-resource "google_compute_subnetwork" "default" {
+resource google_compute_subnetwork default {
   count = "5"
 
   region = "${var.region}"

@@ -1,9 +1,9 @@
 # Comment
 
-output "brango" {
+output brango {
 
 }
 
-output "dango" {
+output dango {
   
 }

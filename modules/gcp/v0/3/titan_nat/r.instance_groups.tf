@@ -6,7 +6,7 @@
  * Target size is always one due to the nature of a 1:1 mapping between an internal and external IP and a single host
  * behind it.
  */
-resource "google_compute_instance_group_manager" "primary" {
+resource google_compute_instance_group_manager primary {
   count = "${length(local.availability_zones)}"
 
   name = "nat-0-${element(split("-", local.availability_zones[count.index]), 2)}"
@@ -32,7 +32,7 @@ resource "google_compute_instance_group_manager" "primary" {
   }
 }
 
-resource "google_compute_health_check" "default" {
+resource google_compute_health_check default {
   name = "nat-gateway"
 
   check_interval_sec = "${var.healthcheck_interval}"

@@ -1,6 +1,6 @@
 # Colossus NAT Module - Health CHeck Resources
 
-resource "google_compute_health_check" "default" {
+resource google_compute_health_check default {
   name = "nat-gateway"
 
   check_interval_sec = "${local.healthcheck_interval}"

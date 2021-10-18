@@ -1,13 +1,13 @@
 # Public Bastion Host Demo
 
-resource "google_compute_address" "bastion" {
+resource google_compute_address bastion {
   name = "bastion"
   address_type = "EXTERNAL"
 }
 
-output "bastion" { value = "${google_compute_address.bastion.address}" }
+output bastion { value = "${google_compute_address.bastion.address}" }
 
-resource "google_compute_instance" "bastion" {
+resource google_compute_instance bastion {
   name = "bastion"
   machine_type = "g1-small"
   zone = "${data.google_compute_zones.available.names[0]}"
@@ -34,7 +34,7 @@ resource "google_compute_instance" "bastion" {
   depends_on = ["module.network"]
 }
 
-resource "google_compute_firewall" "bastion" {
+resource google_compute_firewall bastion {
   name = "bastion"
   network = "${module.network.vpc_id}"
 

@@ -1,7 +1,7 @@
 # Titan Network Module - Route 53 Outputs
 
-output "delegation_set_id" {
-  value = "${aws_route53_delegation_set.default.id}"
+output delegation_set_id {
+  value = aws_route53_delegation_set.default.id
 
   description = <<-EOF
     Unique identifier for the Route 53 delegation set associated with the public Route 53 hosted zone for this Titan
@@ -11,8 +11,8 @@ output "delegation_set_id" {
   EOF
 }
 
-output "delegation_set_name_servers" {
-  value = ["${aws_route53_delegation_set.default.name_servers}"]
+output delegation_set_name_servers {
+  value = aws_route53_delegation_set.default.name_servers
 
   description = <<-EOF
     A set of Amazon name servers serving the public Route 53 hosted zone for this Titan network.
@@ -23,8 +23,8 @@ output "delegation_set_name_servers" {
   EOF
 }
 
-output "domain" {
-  value = "${var.domain}"
+output domain {
+  value = var.domain
 
   description = <<-EOF
     Value of the `domain` variable exported for usability.
@@ -33,8 +33,8 @@ output "domain" {
   EOF
 }
 
-output "private_zone_id" {
-  value = "${aws_route53_zone.private.zone_id}"
+output private_zone_id {
+  value = aws_route53_zone.private.zone_id
 
   description = <<-EOF
     The Amazon hosted zone identifier for the private Route 53 hosted zone for this Titan network.
@@ -43,8 +43,8 @@ output "private_zone_id" {
   EOF
 }
 
-output "public_zone_id" {
-  value = "${aws_route53_zone.public.zone_id}"
+output public_zone_id {
+  value = aws_route53_zone.public.zone_id
 
   description = <<-EOF
     The Amazon hosted zone identifier for the public Route 53 hosted zone for this Titan network.
@@ -53,7 +53,7 @@ output "public_zone_id" {
   EOF
 }
 
-output "reverse_zone" {
+output reverse_zone {
   value = "${var.network_id}.10.in-addr.arpa"
 
   description = <<-EOF
@@ -63,8 +63,8 @@ output "reverse_zone" {
   EOF
 }
 
-output "reverse_zone_id" {
-  value = "${aws_route53_zone.reverse.zone_id}"
+output reverse_zone_id {
+  value = aws_route53_zone.reverse.zone_id
 
   description = <<-EOF
     The Amazon hosted zone identifier for the reverse Route 53 hosted zone for this Titan network.
@@ -73,7 +73,7 @@ output "reverse_zone_id" {
   EOF
 }
 
-output "zone" {
+output zone {
   value = "${var.name_short}.${var.domain}"
 
   description = <<-EOF

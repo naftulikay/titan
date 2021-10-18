@@ -1,0 +1,54 @@
+---
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+  push:
+    branches:
+      - master
+      - main
+
+  workflow_dispatch: {}
+
+env:
+  CACHE_VERSION: v1
+  PYTHON_VERSION: "3.9.2"
+  TERRAFORM_VERSION: "1.0.9"
+
+jobs:
+  validate:
+    environment: Default
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          key: "${{ runner.os }}-${{ env.TERRAFORM_VERSION }}-${{ env.CACHE_VERSION }}-${{ github.sha }}"
+          restore-keys: |
+            ${{ runner.os }}-${{ env.TERRAFORM_VERSION }}-${{ env.CACHE_VERSION }}
+          path: |
+            ~/.cache/pip
+            ./tool/.eggs
+            ./tool/.installed.cfg
+            ./tool/build
+            ./tool/dist
+            ./tool/develop-eggs
+            ./tool/eggs
+            ./tool/parts
+            ./tool/src/*.egg-info
+            ~/.local/share/terraform
+            ~/.local/bin/terraform
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "${{ env.PYTHON_VERSION }}"
+      - run: make -sC tool/ TERRAFORM_VERSION=${{ env.TERRAFORM_VERSION }} install-terraform-impl
+      - run: make -sC tool/ install-venv-impl
+      - run: make -sC tool/ venv-impl
+      - run: make -sC tool/ install-buildout-impl
+      - run: make -sC tool/ buildout-impl
+      - run: make -sC tool/ test-impl
+      - run: make -sC tool/ validate-impl
+        env:
+          AWS_ACCESS_KEY_ID: "${{ secrets.AWS_ACCESS_KEY_ID }}"
+          AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"

@@ -1,13 +1,13 @@
 # Titan NAT Module - IP Address Resources
 
-resource "google_compute_address" "primary_external" {
+resource google_compute_address primary_external {
   count = "${length(local.availability_zones)}"
 
   name = "nat-0-${element(split("-", local.availability_zones[count.index]), 2)}-external"
   address_type = "EXTERNAL"
 }
 
-resource "google_compute_address" "primary_internal" {
+resource google_compute_address primary_internal {
   count = "${length(local.availability_zones)}"
   
   name = "nat-0-${element(split("-", local.availability_zones[count.index]), 2)}-internal"

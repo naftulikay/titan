@@ -1,6 +1,6 @@
 # Kubernetes Demo Resources
 
-resource "google_container_cluster" "default" {
+resource google_container_cluster default {
   name = "example-public"
   description = "Colossus GKE Experiment"
   region = "${module.network.region}"
@@ -17,7 +17,7 @@ resource "google_container_cluster" "default" {
   }
 }
 
-resource "google_container_node_pool" "default" {
+resource google_container_node_pool default {
   name = "default"
 
   region = "${module.network.region}"

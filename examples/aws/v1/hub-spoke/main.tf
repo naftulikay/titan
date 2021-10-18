@@ -4,10 +4,6 @@ provider "aws" {
   region = "us-east-1"
 }
 
-provider "template" {
-  version = "~> 0.1"
-}
-
 terraform {
   backend "local" {
     path = "terraform.tfstate"
@@ -35,28 +31,28 @@ module "environment" {
   domain = "us-east-1.mycompany.com"
   subnets_per_layer = 3
 
-  hub_cidr_block = "${module.hub.cidr_block}"
-  hub_ipv6_cidr_block = "${module.hub.ipv6_cidr_block}"
-  hub_name = "${module.hub.name}"
-  hub_vpc_id = "${module.hub.vpc_id}"
-  hub_zone = "${module.hub.zone}"
+  hub_cidr_block = module.hub.cidr_block
+  hub_ipv6_cidr_block = module.hub.ipv6_cidr_block
+  hub_name = module.hub.name
+  hub_vpc_id = module.hub.vpc_id
+  hub_zone = module.hub.zone
 }
 
 # Internal Routes from the Titan Hub back to the "Development" Titan Environment
-resource "aws_route" "dev_ipv4" {
+resource aws_route dev_ipv4 {
   # FIXME due to cross-module issues: "value of 'count' cannot be computed," we have to calculate this"
-  count = "${3 * 5}"
+  count = 3 * 5
 
-  destination_cidr_block = "${module.environment.cidr_block}"
-  route_table_id = "${module.hub.private_route_table_ids[count.index]}"
-  vpc_peering_connection_id = "${module.environment.hub_peering_connection_id}"
+  destination_cidr_block = module.environment.cidr_block
+  route_table_id = module.hub.private_route_table_ids[count.index]
+  vpc_peering_connection_id = module.environment.hub_peering_connection_id
 }
 
-resource "aws_route" "dev_ipv6" {
+resource aws_route dev_ipv6 {
     # FIXME due to cross-module issues: "value of 'count' cannot be computed," we have to calculate this"
-  count = "${3 * 5}"
+  count = 3 * 5
 
-  destination_ipv6_cidr_block = "${module.environment.ipv6_cidr_block}"
-  route_table_id = "${module.hub.private_route_table_ids[count.index]}"
-  vpc_peering_connection_id = "${module.environment.hub_peering_connection_id}"
+  destination_ipv6_cidr_block = module.environment.ipv6_cidr_block
+  route_table_id = module.hub.private_route_table_ids[count.index]
+  vpc_peering_connection_id = module.environment.hub_peering_connection_id
 }

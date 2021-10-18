@@ -181,7 +181,7 @@ class TerraformPlanValidator(object):
 
             if p.returncode > 0:
                 print("FAILURE[{}] Terraform initialization failed: ".format(example))
-                print(stdout)
+                print(stdout.decode())
                 print(''.join(['-' for x in range(64)]))
                 success = False
                 example_success = False
@@ -194,7 +194,7 @@ class TerraformPlanValidator(object):
 
             if p.returncode > 0:
                 print("FAILURE[{}] Terraform validate failed: ".format(example))
-                print(stdout)
+                print(stdout.decode())
                 print(''.join(['-' for x in range(64)]))
                 success = False
                 example_success = False
@@ -235,7 +235,7 @@ class TerraformValidateValidator(object):
 
             if p.returncode > 0:
                 print("FAILURE[{}] Terraform initialization failed: ".format(example))
-                print(stdout)
+                print(stdout.decode())
                 print(''.join(['-' for x in range(64)]))
                 success = False
                 example_success = False
@@ -248,7 +248,7 @@ class TerraformValidateValidator(object):
 
             if p.returncode > 0:
                 print("FAILURE[{}] Terraform validate failed: ".format(example))
-                print(stdout)
+                print(stdout.decode())
                 print(''.join(['-' for x in range(64)]))
                 success = False
                 example_success = False

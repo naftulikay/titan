@@ -4,7 +4,7 @@ provider "google" {}
 
 provider "google-beta" {}
 
-data "google_compute_zones" "available" {}
+data google_compute_zones available {}
 
 module "network" {
   source = "../../../../../modules/gcp/v0/3/colossus_network"

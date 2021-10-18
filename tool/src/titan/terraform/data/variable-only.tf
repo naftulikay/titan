@@ -1,9 +1,9 @@
 # Comment line
 
-variable "one" {
+variable one {
 
 }
 
-variable "two" {
+variable two {
   
 }

@@ -7,9 +7,9 @@ import os
 import re
 
 BEGIN_COMMENT = re.compile(r'^\s*\#.*$', re.I)
-BEGIN_RESOURCE = re.compile(r'^resource\s+\"(?P<type>[^\"]+)\"\s+\"(?P<name>[^\"]+)\"\s+\{?.*$')
-BEGIN_VARIABLE = re.compile(r'^variable\s+\"(?P<name>[^\"]+)\"\s+\{?.*$')
-BEGIN_OUTPUT = re.compile(r'^output\s+\"(?P<name>[^\"]+)\"\s+\{?.*$')
+BEGIN_RESOURCE = re.compile(r'^resource\s+\"?(?P<type>[a-zA-Z_]+)\"?\s+\"?(?P<name>[a-zA-Z_]+)\"?\s+\{?.*$')
+BEGIN_VARIABLE = re.compile(r'^variable\s+\"?(?P<name>[a-zA-Z_]+)\"?\s+\{?.*$')
+BEGIN_OUTPUT = re.compile(r'^output\s+\"?(?P<name>[a-zA-Z_]+)\"?\s+\{?.*$')
 
 
 class Parser(object):
@@ -44,6 +44,8 @@ class Parser(object):
                 elif BEGIN_VARIABLE.search(line):
                     m = BEGIN_VARIABLE.search(line)
                     entities.append(Variable(m.group('name')))
+                else:
+                    pass
 
         return set(entities)
 

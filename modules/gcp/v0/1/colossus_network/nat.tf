@@ -1,10 +1,10 @@
 # Colossus Network Module - NAT Resources
 
-variable "nat_instance_type"           { default = "n1-standard-2" }
-variable "nat_max_availability_zones"  { default = 5 }
-variable "nat_zonal_high_availability" { default = false }
+variable nat_instance_type           { default = "n1-standard-2" }
+variable nat_max_availability_zones  { default = 5 }
+variable nat_zonal_high_availability { default = false }
 
-output "nat_public_ips" { value = ["${concat(module.nat.primary_public_ips, module.nat.secondary_public_ips)}"] }
+output nat_public_ips { value = ["${concat(module.nat.primary_public_ips, module.nat.secondary_public_ips)}"] }
 
 module "nat" {
   source = "../colossus_nat"

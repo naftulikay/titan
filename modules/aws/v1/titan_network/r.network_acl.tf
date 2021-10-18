@@ -1,8 +1,8 @@
 # Titan Network Module - Network ACL Resources
 
 # The Default Network ACL for the VPC; only used when a new subnet is created outside of Titan
-resource "aws_default_network_acl" "default" {
-  default_network_acl_id = "${aws_vpc.default.default_network_acl_id}"
+resource aws_default_network_acl default {
+  default_network_acl_id = aws_vpc.default.default_network_acl_id
 
   # IPv4 Ingress
   ingress {
@@ -44,9 +44,9 @@ resource "aws_default_network_acl" "default" {
     ipv6_cidr_block = "::/0"
   }
 
-  tags {
+  tags = {
     Name = "${var.name_short}.${var.domain} Default Network ACL"
-    titan_network = "${var.name}"
+    titan_network = var.name
     titan_zone = "${var.name_short}.${var.domain}"
   }
 }

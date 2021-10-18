@@ -4,10 +4,6 @@ provider "aws" {
   region = "us-east-1"
 }
 
-provider "template" {
-  version = "~> 0.1"
-}
-
 terraform {
   backend "local" {
     path = "terraform.tfstate"
