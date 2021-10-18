@@ -4,7 +4,7 @@ provider "google" {
   version = "1.20"
 }
 
-data "google_compute_zones" "available" {}
+data google_compute_zones available {}
 
 module "network" {
   source = "../../../../../modules/gcp/v0/1/colossus_network"

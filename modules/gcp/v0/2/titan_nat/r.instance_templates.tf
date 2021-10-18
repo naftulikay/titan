@@ -1,6 +1,6 @@
 # Titan NAT Module - Instance Template Resources
 
-data "template_file" "instance_startup_script" {
+data template_file instance_startup_script {
   # use either the specified startup script template or the built in one
   template = "${length(var.startup_script_template) > 0 ?
     var.startup_script_template :
@@ -12,7 +12,7 @@ data "template_file" "instance_startup_script" {
   }
 }
 
-resource "google_compute_instance_template" "primary" {
+resource google_compute_instance_template primary {
   count = "${length(local.availability_zones)}"
 
   name_prefix = "nat-0-${element(split("-", local.availability_zones[count.index]), 2)}"

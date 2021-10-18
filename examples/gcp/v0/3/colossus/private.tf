@@ -1,6 +1,6 @@
 # Static Instances Demo Resources
 
-resource "google_compute_instance" "admin" {
+resource google_compute_instance admin {
   count = "${length(data.google_compute_zones.available.names)}"
 
   name = "admin-${count.index}"
@@ -23,7 +23,7 @@ resource "google_compute_instance" "admin" {
   tags = ["nat", "internal-ssh", "colossus-admin"]
 }
 
-resource "google_compute_firewall" "default" {
+resource google_compute_firewall default {
   name = "internal-ssh"
   network = "${module.network.vpc_id}"
 

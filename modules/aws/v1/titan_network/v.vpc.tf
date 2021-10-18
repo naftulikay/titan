@@ -1,7 +1,7 @@
 # Titan Network Module - VPC Variables
 
-variable "domain_name_servers" {
-  type = "list"
+variable domain_name_servers {
+  type = list(string)
   default = ["AmazonProvidedDNS"]
 
   description = <<-EOF
@@ -14,7 +14,7 @@ variable "domain_name_servers" {
   EOF
 }
 
-variable "instance_tenancy" {
+variable instance_tenancy {
   default = "default"
 
   description = <<-EOF
@@ -26,8 +26,8 @@ variable "instance_tenancy" {
   EOF
 }
 
-variable "netbios_name_servers" {
-  type = "list"
+variable netbios_name_servers {
+  type = list(string)
   default = []
 
   description = <<-EOF
@@ -37,7 +37,7 @@ variable "netbios_name_servers" {
   EOF
 }
 
-variable "netbios_node_type" {
+variable netbios_node_type {
   default = 2
 
   description = <<-EOF
@@ -49,7 +49,7 @@ variable "netbios_node_type" {
   EOF
 }
 
-variable "network_id" {
+variable network_id {
   description = <<-EOF
     The second octet to use for this Titan network.
 
@@ -59,8 +59,8 @@ variable "network_id" {
   EOF
 }
 
-variable "ntp_servers" {
-  type = "list"
+variable ntp_servers {
+  type = list(string)
   default = ["169.254.169.123"]
 
   description = <<-EOF
@@ -77,7 +77,7 @@ variable "ntp_servers" {
   EOF
 }
 
-variable "subnets_per_layer" {
+variable subnets_per_layer {
   default = "3"
 
   description = <<-EOF

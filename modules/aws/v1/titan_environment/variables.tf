@@ -1,6 +1,6 @@
 # Titan Environment Module - Variables
 
-variable "hub_account_id" {
+variable hub_account_id {
   default = ""
 
   description = <<-EOF
@@ -10,37 +10,37 @@ variable "hub_account_id" {
   EOF
 }
 
-variable "hub_cidr_block" {
+variable hub_cidr_block {
   description = <<-EOF
     The private IPv4 CIDR block for the Titan Hub this Environment is peered to.
   EOF
 }
 
-variable "hub_ipv6_cidr_block" {
+variable hub_ipv6_cidr_block {
   description = <<-EOF
     The IPv6 CIDR block for the Titan Hub this Environment is peered to.
   EOF
 }
 
-variable "hub_name" {
+variable hub_name {
   description = <<-EOF
     The Titan Network name of the Titan Hub this Environment is peered to.
   EOF
 }
 
-variable "hub_vpc_id" {
+variable hub_vpc_id {
   description = <<-EOF
     The VPC id of the Titan Hub this Environment is peered to.
   EOF
 }
 
-variable "hub_zone" {
+variable hub_zone {
   description = <<-EOF
     The hosted zone name of the Titan Hub this Environment is peered to.
   EOF
 }
 
-variable "peering_include_public" {
+variable peering_include_public {
   default = false
 
   description = <<-EOF

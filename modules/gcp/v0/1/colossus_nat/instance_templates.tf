@@ -1,12 +1,12 @@
 # Colossus NAT Module - Instance Template Resources
 
-data "template_file" "instance_startup_script" {
+data template_file instance_startup_script {
   template = "${file("${path.module}/templates/startup.sh.tpl")}"
 }
 
-variable "instance_type" { default = "n1-standard-2" }
+variable instance_type { default = "n1-standard-2" }
 
-resource "google_compute_instance_template" "primary" {
+resource google_compute_instance_template primary {
   count = "${length(local.availability_zones)}"
 
   name_prefix = "nat-0-${element(split("-", local.availability_zones[count.index]), 2)}"
@@ -48,7 +48,7 @@ resource "google_compute_instance_template" "primary" {
   }
 }
 
-resource "google_compute_instance_template" "secondary" {
+resource google_compute_instance_template secondary {
   count = "${var.zonal_high_availability ? length(local.availability_zones) : 0}"
 
   name_prefix = "nat-1-${element(split("-", local.availability_zones[count.index]), 2)}"

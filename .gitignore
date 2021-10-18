@@ -1,3 +1,5 @@
+examples/**/.terraform*
+/.idea
 .galaxy-roles
 .python-version
 .terraform
@@ -16,6 +18,7 @@ tool/develop-eggs
 tool/eggs
 tool/parts
 tool/src/*.egg-info
+tool/venv
 
 tmp/
 

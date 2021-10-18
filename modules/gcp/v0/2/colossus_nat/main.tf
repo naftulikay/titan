@@ -1,6 +1,6 @@
 # Colossus NAT Module
 
-data "google_compute_zones" "available" {}
+data google_compute_zones available {}
 
 locals {
   autohealing_initial_delay = 120
@@ -35,12 +35,12 @@ locals {
   private_route_zonal_priority = 800
 }
 
-variable "dmz_cidr_block" {}
-variable "dmz_subnet_id" {}
-variable "max_availability_zones" { default = 5 }
-variable "network_cidr_block" {}
-variable "network_name" {}
-variable "vpc_id" {}
-variable "zonal_high_availability" { default = false }
+variable dmz_cidr_block {}
+variable dmz_subnet_id {}
+variable max_availability_zones { default = 5 }
+variable network_cidr_block {}
+variable network_name {}
+variable vpc_id {}
+variable zonal_high_availability { default = false }
 
-output "availability_zones" { value = ["${local.availability_zones}"] }
+output availability_zones { value = ["${local.availability_zones}"] }

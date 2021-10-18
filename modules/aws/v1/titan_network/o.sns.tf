@@ -1,7 +1,7 @@
 # Titan Network Module - SNS Outputs
 
-output "autoscaling_sns_topic_arn" {
-  value = "${aws_sns_topic.autoscaling.arn}"
+output autoscaling_sns_topic_arn {
+  value = aws_sns_topic.autoscaling.arn
 
   description = <<-EOF
     ARN of the SNS autoscaling topic.

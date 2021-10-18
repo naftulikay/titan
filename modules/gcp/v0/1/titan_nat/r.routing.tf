@@ -1,6 +1,6 @@
 # Titan NAT Module - Routing Resources
 
-resource "google_compute_route" "primary" {
+resource google_compute_route primary {
   count = "${length(local.availability_zones)}"
 
   name = "nat-0-${element(split("-", local.availability_zones[count.index]), 2)}"

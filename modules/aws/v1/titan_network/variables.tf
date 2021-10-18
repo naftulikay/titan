@@ -1,6 +1,6 @@
 # Titan Network Module - Variables
 
-variable "name" {
+variable name {
   description = <<-EOF
     Long name of the Titan network.
 
@@ -10,17 +10,17 @@ variable "name" {
   EOF
 }
 
-variable "name_short" {
+variable name_short {
   description = <<-EOF
     Short name of the Titan network.
 
-    This value serves as the first segment of the DNS hosted zone for the given Titan network, e.g `dev.${var.domain}`.
+    This value serves as the first segment of the DNS hosted zone for the given Titan network, e.g `dev.$${var.domain}`.
 
     Examples: `dev`, `stg`, `prod`.
   EOF
 }
 
-variable "name_fancy" {
+variable name_fancy {
   description = <<-EOF
     "Fancy" name for the Titan network.
 

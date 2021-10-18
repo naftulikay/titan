@@ -1,6 +1,6 @@
 # Titan Layer Module - Routing Variables
 
-variable "egress_only_gateway_id" {
+variable egress_only_gateway_id {
   default = ""
 
   description = <<-EOF
@@ -10,7 +10,7 @@ variable "egress_only_gateway_id" {
   EOF
 }
 
-variable "internet_gateway_id" {
+variable internet_gateway_id {
   default = ""
 
   description = <<-EOF
@@ -20,9 +20,9 @@ variable "internet_gateway_id" {
   EOF
 }
 
-variable "nat_gateway_ids" {
-  type = "list"
-  default = ["null"] # mandated by parser
+variable nat_gateway_ids {
+  type = list(string)
+  default = [] # mandated by parser
 
   description = <<-EOF
     A list of NAT Gateway ids, one per availability zone, of the Titan network owning this layer.

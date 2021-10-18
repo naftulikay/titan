@@ -1,6 +1,6 @@
 # Titan NAT Module - Firewall Resources
 
-resource "google_compute_firewall" "nat_ssh" {
+resource google_compute_firewall nat_ssh {
   name = "nat-gateway-ssh"
   description = "Firewall rule allowing SSH access to NAT gateway instances."
   network = "${var.vpc_id}"
@@ -18,7 +18,7 @@ resource "google_compute_firewall" "nat_ssh" {
   target_tags = ["${var.instance_tags[0]}"]
 }
 
-resource "google_compute_firewall" "nat_summary" {
+resource google_compute_firewall nat_summary {
   name = "nat-internal-ingress"
   description = "Firewall rule allowing instances within the network to use NAT gateways as a summary route to WAN."
 
@@ -32,7 +32,7 @@ resource "google_compute_firewall" "nat_summary" {
   target_tags = ["${var.instance_tags[0]}"]
 }
 
-resource "google_compute_firewall" "health_check" {
+resource google_compute_firewall health_check {
   name    = "nat-gateway-health-check"
   description = "Firewall rule allowing health checks to NAT gateway instances."
   network = "${var.vpc_id}"
