@@ -2,7 +2,7 @@
 
 # NAT Gateways per Availability Zone
 resource aws_nat_gateway default {
-  count = var.subnets_per_layer
+  count = var.nat_enabled ? var.subnets_per_layer : 0
 
   allocation_id = aws_eip.nat[count.index].id
   subnet_id = module.dmz_layer.subnet_ids[count.index]
@@ -21,7 +21,7 @@ resource aws_nat_gateway default {
 
 # Elastic IP Allocation per NAT Gateway
 resource aws_eip nat {
-  count = var.subnets_per_layer
+  count = var.nat_enabled ? var.subnets_per_layer : 0
 
   vpc = true
 

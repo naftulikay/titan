@@ -9,6 +9,7 @@ module "network" {
   name = var.name
   name_fancy = var.name_fancy
   name_short = var.name_short
+  nat_enabled = var.nat_enabled
   netbios_name_servers = var.netbios_name_servers
   network_id = var.network_id
   ntp_servers = var.ntp_servers

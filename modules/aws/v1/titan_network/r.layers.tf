@@ -14,6 +14,7 @@ module "dmz_layer" {
   zone = "${var.name_short}.${var.domain}"
   internet_gateway_id = aws_internet_gateway.default.id
   cidr_start = 0 * 5
+  nat_enabled = var.nat_enabled
 }
 
 # The Routing Layer: Layer 5 and Layer 7 Routing
@@ -29,6 +30,7 @@ module "routing_layer" {
   zone = "${var.name_short}.${var.domain}"
   cidr_start = 1 * 5
   egress_only_gateway_id = aws_egress_only_internet_gateway.default.id
+  nat_enabled = var.nat_enabled
   nat_gateway_ids = aws_nat_gateway.default.*.id
 }
 
@@ -45,6 +47,7 @@ module "service_layer" {
   zone = "${var.name_short}.${var.domain}"
   cidr_start = 2 * 5
   egress_only_gateway_id = aws_egress_only_internet_gateway.default.id
+  nat_enabled = var.nat_enabled
   nat_gateway_ids = aws_nat_gateway.default.*.id
 }
 
@@ -61,6 +64,7 @@ module "data_layer" {
   zone = "${var.name_short}.${var.domain}"
   cidr_start = 3 * 5
   egress_only_gateway_id = aws_egress_only_internet_gateway.default.id
+  nat_enabled = var.nat_enabled
   nat_gateway_ids = aws_nat_gateway.default.*.id
 }
 
@@ -77,6 +81,7 @@ module "admin_layer" {
   zone = "${var.name_short}.${var.domain}"
   cidr_start = 4 * 5
   egress_only_gateway_id = aws_egress_only_internet_gateway.default.id
+  nat_enabled = var.nat_enabled
   nat_gateway_ids = aws_nat_gateway.default.*.id
 }
 
@@ -97,5 +102,6 @@ module "net_layer" {
   cidr_mask_bits = 8
 
   egress_only_gateway_id = aws_egress_only_internet_gateway.default.id
+  nat_enabled = var.nat_enabled
   nat_gateway_ids = aws_nat_gateway.default.*.id
 }

@@ -1,5 +1,13 @@
 # Titan Network Module - NAT Gateway Outputs
 
+output nat_enabled {
+  value = var.nat_enabled
+
+  description = <<-EOF
+    Whether NAT gateways and relevant resources are created.
+  EOF
+}
+
 output nat_allocation_ids {
   value = aws_nat_gateway.default.*.allocation_id
 

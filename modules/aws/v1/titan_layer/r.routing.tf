@@ -43,8 +43,8 @@ resource aws_route public_ipv6 {
 
 # Route for Private, NAT Layers
 resource aws_route private {
-  # only created for private layers
-  count = var.is_public ? 0 : length(var.availability_zones)
+  # only created for private layers when nat is enabled
+  count = var.is_public || !var.nat_enabled ? 0 : length(var.availability_zones)
 
   route_table_id = aws_route_table.default[count.index].id
   # there must be one NAT gateway per availability zone, hence 1:1 route table to NAT gateway
