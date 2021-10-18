@@ -11,7 +11,7 @@ terraform {
 }
 
 module "network" {
-  source = "../../../../modules/aws/v1/titan_network"
+  source = "../../../../modules/aws/v2/titan_network"
   network_id = 1
   name = "development"
   name_short = "dev"

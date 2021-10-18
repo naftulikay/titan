@@ -35,7 +35,7 @@ class BindingValidator(object):
 
     def validate(self):
         """Validates that all variables are exported as outputs."""
-        base = os.path.join(Git.root(), 'modules', 'aws', 'v1')
+        base = os.path.join(Git.root(), 'modules', 'aws', 'v2')
         modules = [d for d in os.listdir(base) if os.path.isdir(os.path.join(base, d))]
 
         success = True
@@ -69,7 +69,7 @@ class ExportValidator(object):
 
     def validate(self):
         """Validate that modules export their outputs in a template file adjacent to the source code."""
-        base = os.path.join(Git.root(), 'modules', 'aws', 'v1')
+        base = os.path.join(Git.root(), 'modules', 'aws', 'v2')
         modules = [d for d in os.listdir(base) if os.path.isdir(os.path.join(base, d))]
 
         success = True
@@ -120,7 +120,7 @@ class InheritanceValidator(object):
     def validate(self):
         """Validate that child modules contain parent variables and outputs."""
 
-        base = os.path.join(Git.root(), 'modules', 'aws', 'v1')
+        base = os.path.join(Git.root(), 'modules', 'aws', 'v2')
 
         success = True
 
@@ -166,7 +166,7 @@ class TerraformPlanValidator(object):
 
     def validate(self):
         """Execute validation."""
-        base = os.path.join(Git.root(), 'examples', 'aws', 'v1')
+        base = os.path.join(Git.root(), 'examples', 'aws', 'v2')
 
         success = True
 
@@ -220,7 +220,7 @@ class TerraformValidateValidator(object):
 
     def validate(self):
         """Execute validation."""
-        base = os.path.join(Git.root(), 'examples', 'aws', 'v1')
+        base = os.path.join(Git.root(), 'examples', 'aws', 'v2')
 
         success = True
 

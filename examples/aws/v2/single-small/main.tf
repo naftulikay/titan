@@ -1,4 +1,4 @@
-# Single, Large-Sized (5 AZ) Titan Network Example
+# Single, Small-Sized (1 AZ) Titan Network Example
 
 provider "aws" {
   region = "us-east-1"
@@ -11,11 +11,11 @@ terraform {
 }
 
 module "network" {
-  source = "../../../../modules/aws/v1/titan_network"
+  source = "../../../../modules/aws/v2/titan_network"
   network_id = 1
   name = "development"
   name_short = "dev"
   name_fancy = "Titan Development Network"
   domain = "us-east-1.mycompany.com"
-  subnets_per_layer = 5
+  subnets_per_layer = 1
 }
